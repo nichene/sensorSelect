@@ -57,12 +57,15 @@ try:
 
 	#OPTIMIZE
 	model.optimize()
-
+	
 	#PRINT DECISION VARIABLES
-	for v in model.getVars():
-		print(v.varName, v.x)
+	if (model.solCount > 0 ): 
+		for v in model.getVars():
+			print(v.varName, v.x)
 
-	print ('Obj: ', model.objVal)
+		print ('Obj: ', model.objVal)
+	else:
+		print("No Vars")
 
 except GurobiError:
 	print('Error reported: ')
